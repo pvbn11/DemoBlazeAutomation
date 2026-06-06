@@ -14,6 +14,11 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Autor: Paolo Neil Valladares Bazalar
+ * Repositorio: https://github.com/pvbn11/ProjectDemoBlaze_Selenium
+ * Descripción: Suite de automatización e2e Demo Blaze
+ */
 
 public class BaseTest implements TestWatcher {
 

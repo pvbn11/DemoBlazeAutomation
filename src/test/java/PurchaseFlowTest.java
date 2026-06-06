@@ -11,6 +11,12 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Autor: Paolo Neil Valladares Bazalar
+ * Repositorio: https://github.com/pvbn11/ProjectDemoBlaze_Selenium
+ * Descripción: Suite de automatización e2e Demo Blaze
+ */
+
 @ExtendWith(BaseTest.class)
 public class PurchaseFlowTest extends BaseTest {
 

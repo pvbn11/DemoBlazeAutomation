@@ -9,6 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+/**
+ * Autor: Paolo Neil Valladares Bazalar
+ * Repositorio: https://github.com/pvbn11/ProjectDemoBlaze_Selenium
+ * Descripción: Suite de automatización e2e Demo Blaze
+ */
+
 public class CartPage extends BasePage {
     private By placeOrderBtn = By.xpath("//button[text()='Place Order']");
     private By nameField = By.id("name");
@@ -56,12 +62,9 @@ public class CartPage extends BasePage {
     }
 
     public int getTotalPriceFromTable() {
-        // Espera explícita a que las filas de la tabla carguen
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         List<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//tbody[@id='tbodyid']/tr")));
-
         int total = 0;
-        // Iteramos sobre las filas para obtener la celda del precio (la tercera columna, td[3])
         for (WebElement row : rows) {
             String priceText = row.findElement(By.xpath("./td[3]")).getText();
             total += Integer.parseInt(priceText);

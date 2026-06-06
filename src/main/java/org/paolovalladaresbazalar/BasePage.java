@@ -7,6 +7,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+/**
+ * Autor: Paolo Neil Valladares Bazalar
+ * Repositorio: https://github.com/pvbn11/ProjectDemoBlaze_Selenium
+ * Descripción: Suite de automatización e2e Demo Blaze
+ */
+
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;

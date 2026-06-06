@@ -4,17 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+
+
 public class ProductDetailsPage extends BasePage{
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
     }
 
-    // Asegúrate de que este método exista AQUÍ
     public ProductDetailsPage addProductToCart() {
-        // Implementación: click al botón y manejar alert si es necesario
         clickElement(By.linkText("Add to cart"));
         handleAlert();
-        // Aquí deberías añadir la lógica para aceptar el alert de JS si lo requiere Demoblaze
         return this; // Retorna la misma página
     }
 
