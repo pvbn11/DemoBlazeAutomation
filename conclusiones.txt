@@ -1,0 +1,54 @@
+=======================================================================================================
+PROYECTO: Automatización de Pruebas E2E de la plataforma "Demo Blaze " con Selenium WebDriver y Java
+AUTOR: Paolo Neil Valladares Bazalar
+REPOSITORIO: https://github.com/pvbn11/ProjectDemoBlaze_Selenium
+=======================================================================================================
+
+1.Informe de Hallazgos:
+
+• H01: Validación de Datos de Entrada Insuficiente
+ -Descripción: El formulario "Place Order" permite finalizar la compra con datos inválidos, aceptando caracteres alfanuméricos/especiales en campos numéricos (ej. "Credit Card") y omitiendo campos obligatorios (país, ciudad). 
+ -Impacto: Riesgo de corrupción de datos en la base de datos y falta de integridad en la información de pago, lo que dificulta la gestión logística de los pedidos.
+ -Recomendación: Implementar validaciones de tipo de datos (Regex) y restricciones de longitud en el frontend para asegurar que solo se procesen datos con formato válido.
+
+• H02: Flujo de Compra sin Selección de Productos
+ - Descripción: El sistema permite completar el flujo de compra, incluido el botón "Purchase", incluso si el carrito se encuentra vacío. 
+ - Impacto: Fallo de lógica de negocio crítica; permite la generación de pedidos nulos o erróneos que afectan las métricas de ventas y el inventario.
+ - Recomendación: Añadir una validación de estado en el botón "Purchase" que bloquee la acción si el carrito no contiene al menos un producto.
+
+• H03: Inconsistencia en la Carga de Elementos (Race Condition)
+ - Descripción: Al navegar al "Cart", el valor total (id="totalp") y el contenido de la tabla no se renderizan instantáneamente, causando errores de sincronización. 
+ - Impacto: Falsos negativos en las pruebas automatizadas y posible visualización de montos incorrectos para el usuario final si interactúa rápido.
+ - Recomendación: Implementar esperas explícitas (WebDriverWait) que aseguren la visibilidad y carga completa del DOM antes de intentar validar o procesar los datos. 
+
+• H04: Experiencia de Usuario (UX) Deficiente en Notificaciones
+ - Descripción: El sistema utiliza alertas nativas del navegador (alert()) para confirmar la adición de productos, lo cual es intrusivo y anticuado. 
+ - Impacto: Interrumpe el flujo de navegación del usuario y genera una percepción de baja calidad del producto digital.
+ - Recomendación: Reemplazar las alertas nativas por componentes de UI modernos que no requieran interacción manual para continuar navegando.
+
+• H05: Falta de Autorización de Usuario (Login)
+ - Descripción: El proceso de compra se ejecuta exitosamente sin requerir que el usuario haya iniciado sesión. 
+ - Impacto: Falta de trazabilidad y seguridad; las transacciones quedan "huérfanas" y no pueden ser vinculadas a un perfil de cliente para historial, soporte o fidelización.
+ - Recomendación: Restringir el acceso al formulario de compra o al botón "Place Order" únicamente a usuarios con sesión activa (autenticados).
+
+• H06: Ausencia de Seguridad en Transacciones (CVV)
+ - Descripción: El formulario de pago omite solicitar códigos de seguridad estándar como el CVV, pidiendo únicamente el número de tarjeta.
+ - Impacto: Incrementa exponencialmente el riesgo de fraude y transacciones no autorizadas, reduciendo la confianza y seguridad del usuario en la plataforma.
+ - Recomendación: Integrar la solicitud obligatoria de CVV y aplicar máscaras de seguridad a los campos de entrada de datos sensibles.
+
+• H07: Carencia de Notificaciones y Comprobantes
+ - Descripción: La plataforma no solicita correo electrónico ni genera un comprobante de compra digital para el usuario.
+ - Impacto: Desconfianza del usuario al no tener respaldo de su compra y nula capacidad del equipo de soporte para gestionar incidencias post-venta.
+ - Recomendación: Incluir un campo obligatorio de correo electrónico y configurar un servicio de envío automático de resumen de pedido tras la compra exitosa.
+
+
+2.Conclusiones:
+
+- El análisis del flujo de prueba permitió identificar brechas del diseño UX y de la seguridad, lo que demuestra que la automatización es una herramienta fundamental para no solo encontrar errores funcionales, sino para auditar la madurez del producto.
+- El uso del patrón Page Object Model permitió crear una arquitectura escalable y mantenible separando la lógica de interacción de la UI de la lógica de los casos de prueba, lo cual facilitará la reutilización de código.
+- La implementación de espera explícitas fueron fundamentales para mitigar las "race conditions" propias de la carga asíncrona de los elementos en la web, garantizando la estabilidad del framework Selenium.
+- La automatización de capturas de pantallas ante fallos permite una trazabilidad efectiva, reduciendo el tiempo de depuración y facilitando la documentación de errores.
+- La automatización de este flujo de compras no solo representa una reducción del tiempo de ejecución manual de las pruebas de regresión, sino que permite actuar como un mecanismo de protección de calidad ante futuros cambios en el código del sistema., ya que cada vez que surga un cambio, solo se ejecutan las pruebas autoamtizadas y se sabrá en minutos si se rompió el flujo de compras.
+
+
+
