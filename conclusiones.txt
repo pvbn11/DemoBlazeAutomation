@@ -1,7 +1,7 @@
 =======================================================================================================
 PROYECTO: Automatización de Pruebas E2E de la plataforma "Demo Blaze " con Selenium WebDriver y Java
 AUTOR: Paolo Neil Valladares Bazalar
-REPOSITORIO: https://github.com/pvbn11/ProjectDemoBlaze_Selenium
+REPOSITORIO: https://github.com/pvbn11/DemoBlazeAutomation
 =======================================================================================================
 
 1.Informe de Hallazgos:
