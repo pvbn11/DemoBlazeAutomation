@@ -4,7 +4,8 @@ Proyecto de automatización de QA utilizando **Selenium WebDriver**, **Java** y 
 
 ## Repositorio del Proyecto
 
-Puedes encontrar el código fuente y la documentación completa en: https://github.com/pvbn11/DemoBlazeAutomation
+Puedes encontrar el código fuente y la documentación completa en:
+https://github.com/pvbn11/DemoBlazeAutomation
 
 ## Estructura del Proyecto
 - `src/main/java/org/paolovalladaresbazalar/`: Contiene las clases de las páginas (POM) que definen la estructura y acciones de la web.
